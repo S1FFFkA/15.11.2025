@@ -3,11 +3,12 @@ package http
 import (
 	"context"
 	"fmt"
-	"linkschecker/logic"
 	"log"
 	"net/http"
 	"sync"
 	"time"
+
+	"github.com/S1FFFkA/15.11.2025/logic"
 )
 
 var activeRequests sync.WaitGroup

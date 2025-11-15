@@ -7,8 +7,8 @@ import (
 	"syscall"
 	"time"
 
-	"linkschecker/internal/http"
-	"linkschecker/logic"
+	"github.com/S1FFFkA/15.11.2025/internal/http"
+	"github.com/S1FFFkA/15.11.2025/logic"
 )
 
 func main() {

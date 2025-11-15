@@ -8,7 +8,7 @@ import (
 
 	"time"
 
-	"linkschecker/logic"
+	"github.com/S1FFFkA/15.11.2025/logic"
 )
 
 type Handler struct {
@@ -165,7 +165,15 @@ func (h *Handler) GenerateReport(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Disposition", "attachment; filename=report.pdf")
 	w.Header().Set("Content-Length", fmt.Sprintf("%d", len(pdfData)))
 	w.WriteHeader(http.StatusOK)
-	w.Write(pdfData)
+	_, err = w.Write(pdfData)
+	if err != nil {
+		errdto := ErrorDTO{
+			Message: err.Error(),
+			Time:    time.Now(),
+		}
+		http.Error(w, errdto.Error(), http.StatusInternalServerError)
+		return
+	}
 }
 
 func (h *Handler) Shutdown(w http.ResponseWriter, r *http.Request) {
